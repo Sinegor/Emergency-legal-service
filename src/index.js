@@ -2,12 +2,21 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+import reportWebVitals from './reportWebVitals';/* библиотека, отвечающая за корректную работу
+веб-метрик */
+import { Button, DatePicker, Space, version } from "antd";
+import "antd/dist/antd.css";
+import classes from './App.module.css';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
+//import store from '../redux/redux_store'; 
+const root = ReactDOM.createRoot(document.getElementById('root'));/* ранее в index.html в body был создан
+единственный div с id = root, в этой строке этот DOM элемент предоставляется для
+последующего рендеринга корневого элемента */ 
+root.render(          /* React.StrickMode - это строгий режим, он не рендерит
+  видимого UI, а просто активирует дополнительные проверки и предупреждения 
+  для своих потомков. */
+  <React.StrictMode> 
+    <App className={classes.app}  />
   </React.StrictMode>
 );
 

@@ -1,0 +1,13 @@
+{
+  "folders": [
+	{
+		"path": "../../.."
+	},
+	{
+		"path": "../../../../Практика"
+	}
+],
+  "settings": {
+    "liveServer.settings.multiRootWorkspaceName": "Практика"
+  }
+}
