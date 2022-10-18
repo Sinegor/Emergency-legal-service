@@ -3,6 +3,7 @@ import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import {  AutoComplete, Button, Cascader, Checkbox, Col, Form, Input, InputNumber, Row, Select } from 'antd';
 import classes from './Form_registration.module.css'
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 const residences = [
   {
@@ -74,9 +75,7 @@ function FormRegistration(props){
   const [password, setPassward] = useState("");
   const [userMail, setUserMail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
-  let getData = () =>{
-    console.log(login+""+password+""+userMail+""+phoneNumber)
-  };    
+  const history = useHistory()
   return(
       <div className={classes.formWrapper}>
       <Form
@@ -84,7 +83,7 @@ function FormRegistration(props){
       //form={form}
       className= {classes.registration}
       name="register"
-      //onFinish={onFinish}
+      onFinish={() => history.push(`/profile/${login}`)}
       initialValues={{
         residence: ['zhejiang', 'hangzhou', 'xihu'],
         prefix: '86',
@@ -213,7 +212,7 @@ function FormRegistration(props){
         </Checkbox>
       </Form.Item>
       <Form.Item >
-        <Button type="primary" htmlType="submit" onClick={getData}>
+        <Button type="primary" htmlType="submit" >
           Register
         </Button>
       </Form.Item>

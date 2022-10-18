@@ -7,6 +7,7 @@ import reportWebVitals from './reportWebVitals';/* библиотека, отв�
 import { Button, DatePicker, Space, version } from "antd";
 import "antd/dist/antd.css";
 import classes from './App.module.css';
+import ActiveUserContext from './context/activeUserContext';
 
 //import store from '../redux/redux_store'; 
 const root = ReactDOM.createRoot(document.getElementById('root'));/* ранее в index.html в body был создан
@@ -16,7 +17,9 @@ root.render(          /* React.StrickMode - это строгий режим, о
   видимого UI, а просто активирует дополнительные проверки и предупреждения 
   для своих потомков. */
   <React.StrictMode> 
-    <App className={classes.app}  />
+    <ActiveUserContext.Provider value='none'>
+      <App className={classes.app}  />
+    </ActiveUserContext.Provider>
   </React.StrictMode>
 );
 

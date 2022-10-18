@@ -20,7 +20,7 @@ function Form_login () {
       className= {classes.login_form}
       initialValues={{ remember: true }}
       size = "large"
-      onFinish={() => history.push(`/profile/${login}`)}  // используем обработчик, предложенный Ant Design, работает, как onClick // 
+      onFinish={getData}  // используем обработчик, предложенный Ant Design, работает, как onClick // 
        >
       <Form.Item
         name="username"

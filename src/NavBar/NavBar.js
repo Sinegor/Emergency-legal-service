@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import {BrowserRouter, Route} from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import classes from './NavBar.module.css';
 function Navbar () {
     return (
@@ -10,19 +12,17 @@ function Navbar () {
                             <Link to="/form_login">Логин</Link>
                         </li>
                         <li>
-                            <Link to="/Profile">Личный кабинет</Link>
+                            <Link to="/profile/">Личный кабинет</Link>
                         </li>
-                        <li>
-                            <Link to="/immediate_legal_assistance">Срочная юридическая помощь</Link>
-                        </li>
-                        <li>
-                            <Link to="">Спасение</Link>
-                        </li>
-                        <li>
-                            <Link to="">Доска объявлений</Link>
-                        </li>
+                    
                         <li>
                             <Link to="/">Домашняя страница</Link>
+                        </li>
+                        <li>
+                            <Link to="/profile/settings/"> Настройки </Link>
+                        </li>
+                        <li>
+                            <Link to="/profile/supporting/"> Служба поддержки </Link>
                         </li>
                     </ul>
                 
