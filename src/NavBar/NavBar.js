@@ -19,10 +19,10 @@ function Navbar () {
                             <Link to="/">Домашняя страница</Link>
                         </li>
                         <li>
-                            <Link to="/profile/settings/"> Настройки </Link>
+                            <Link to="/settings/"> Настройки </Link>
                         </li>
                         <li>
-                            <Link to="/profile/supporting/"> Служба поддержки </Link>
+                            <Link to="/supporting/"> Служба поддержки </Link>
                         </li>
                     </ul>
                 
