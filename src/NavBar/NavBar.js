@@ -1,32 +1,27 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import {BrowserRouter, Route} from 'react-router-dom';
-import { useParams } from 'react-router-dom';
-import classes from './NavBar.module.css';
+import { useParams, useHistory, Link } from 'react-router-dom';
+import { Menu} from 'antd';
+import {AimOutlined} from '@ant-design/icons'
 function Navbar () {
+    const history = useHistory()
     return (
-    <nav className= {classes.navBar}>
-                <h2 className= {classes.H2_1}>Меню:</h2>
-                    <ul className={classes.ul_nav}>
-                        <li>
-                            <Link to="/form_login">Логин</Link>
-                        </li>
-                        <li>
-                            <Link to="/profile/">Личный кабинет</Link>
-                        </li>
-                    
-                        <li>
-                            <Link to="/">Домашняя страница</Link>
-                        </li>
-                        <li>
-                            <Link to="/settings/"> Настройки </Link>
-                        </li>
-                        <li>
-                            <Link to="/supporting/"> Служба поддержки </Link>
-                        </li>
-                    </ul>
-                
-    </nav>
+    <div>
+        <Menu 
+        theme="dark" defaultSelectedKeys={['2']}
+        onClick={({key})=>history.push(key)}
+        items={[
+                        {label:"Логин", key: "form_login", icon:<AimOutlined/> },
+                        {label: "Личный кабинет", key: "/profile/", icon:<AimOutlined/>},
+                        {label: "Домашняя страница", key: "/", icon:<AimOutlined/>},
+                        {label: "Настройки", key: "/settings/", icon:<AimOutlined/>},
+                        {label: "Служба поддержки", key: "/supporting/", icon:<AimOutlined/>},
+                        ]}>
+
+        </Menu>
+    
+    
+    </div>
     );
 }
 export default Navbar;

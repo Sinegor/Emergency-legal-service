@@ -18,7 +18,7 @@ function Profile () {
     <ProfileMenu user={current_login}
     name_1 = "Срочная юридическая помощь"
     name_2 = "Спасение"
-    name_3 = "Доска заказав"
+    name_3 = "Доска заказов"
     link_1 = "ila_anketa"
     link_2 = "legal_salvation"
     link_3 = "order_board"
