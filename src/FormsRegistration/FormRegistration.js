@@ -4,6 +4,7 @@ import {  AutoComplete, Button, Cascader, Checkbox, Col, Form, Input, InputNumbe
 import classes from './Form_registration.module.css'
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
+import axios from "axios"; 
 
 const residences = [
   {
@@ -76,6 +77,7 @@ function FormRegistration(props){
   const [userMail, setUserMail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const history = useHistory()
+  let registrationData = {}
   return(
       <div className={classes.formWrapper}>
       <Form
@@ -83,7 +85,27 @@ function FormRegistration(props){
       //form={form}
       className= {classes.registration}
       name="register"
-      onFinish={() => history.push(`/profile/${login}`)}
+      onFinish={() => {
+                        /*axios
+                        .post("http://127.0.0.1:8000/addUser",{
+                          "login":login,
+                          "password":password,
+                          "userMail":userMail,
+                          "phoneNumber":phoneNumber
+                        })
+                        .then(function(response) {
+                              console.log(response)
+                              history.push(`/profile/${login}`)})
+                        .catch(function (error) {
+                            console.log(error);
+                                                }); */
+                        registrationData={
+                          "login":login,
+                          "password":password,
+                          "userMail":userMail,
+                          "phoneNumber":phoneNumber
+                        }
+                          }}
       initialValues={{
         residence: ['zhejiang', 'hangzhou', 'xihu'],
         prefix: '86',
@@ -132,7 +154,7 @@ function FormRegistration(props){
       </Form.Item>
 
       <Form.Item
-        name="confirm"
+        name="confirmPassward"
         label="Confirm Password"
         dependencies={['password']}
         hasFeedback

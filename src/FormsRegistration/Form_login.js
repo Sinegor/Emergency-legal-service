@@ -10,9 +10,7 @@ function Form_login () {
   присваивается начальное значение "" и возвращается метод(функция) по его изменению??*/
   const [password, setPassward] = useState("")
   const history = useHistory()
-  let getData = () =>{
-    console.log(login+""+password);
-  };
+  let loginData = {};
   return (
      <div className={classes.formWrapper}>
      <Form
@@ -20,7 +18,12 @@ function Form_login () {
       className= {classes.login_form}
       initialValues={{ remember: true }}
       size = "large"
-      onFinish={() => history.push(`/profile/${login}`)}  // используем обработчик, предложенный Ant Design, работает, как onClick // 
+      onFinish={(log, pass) =>{ 
+                loginData = {
+                  "login": login,
+                  "password": password
+                }
+                history.push(`/profile/${login}`)}}  // используем обработчик, предложенный Ant Design, работает, как onClick // 
        >
       <Form.Item
         name="username"

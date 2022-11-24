@@ -23,6 +23,7 @@ import {
 } from '@ant-design/icons';
 import { Breadcrumb, Layout,} from 'antd';
 const { Header, Content, Footer, Sider } = Layout;
+
 function App() {
   const [collapsed, setCollapsed] = useState(false);
   return (
@@ -40,16 +41,24 @@ function App() {
             className="site-layout-background"
             style={{
               padding: 0,
+            
+
             }}
-          />
+          >
+          <h1
+          style={{
+            color:'greenyellow'}
+          }
+          > Сервис неотложной юридической помощи</h1>
+          </Header>
           <Content
             style={{
-              margin: '0 16px',
+              backgroundColor: 'blueviolet'
             }}
           >
             <Breadcrumb
               style={{
-                margin: '16px 0',
+                margin: '16px 10px',
               }}
             >
               <Breadcrumb.Item>User</Breadcrumb.Item>
@@ -70,6 +79,7 @@ function App() {
           <Footer
             style={{
               textAlign: 'center',
+              backgroundColor: 'skyblue'
             }}
           >
           

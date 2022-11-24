@@ -5,8 +5,9 @@ import classes from './Profile.module.css';
 import Form_login from '../FormsRegistration/Form_login';
 import { ReactDOM } from 'react';
 import {BrowserRouter, Route} from 'react-router-dom';
-import ILA_anketa from '../ILA-anketa/ILA_anketa';
+import ILA_anketa from '../ILA-anketa/ILA_anketa'
 import ProfileMenu from './ProfileMenu';
+//import axios from 'axios';
 function Profile () {
     const params = useParams()
     let current_login = params.id_login;
