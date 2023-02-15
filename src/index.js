@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';/* библиотека, отвечающая за корректную работу
 веб-метрик */
-import { Button, DatePicker, Space, version } from "antd";
+//import { Button, DatePicker, Space, version } from "antd";
 import "antd/dist/antd.css";
 import classes from './App.module.css';
 import ActiveUserContext from './context/activeUserContext';

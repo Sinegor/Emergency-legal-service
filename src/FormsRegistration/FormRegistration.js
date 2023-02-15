@@ -86,8 +86,9 @@ function FormRegistration(props){
       className= {classes.registration}
       name="register"
       onFinish={() => {
-                        /*axios
-                        .post("http://127.0.0.1:8000/addUser",{
+                        let url = "http://127.0.0.1:8000/client/registration"
+                        axios
+                        .post(url,{
                           "login":login,
                           "password":password,
                           "userMail":userMail,
@@ -95,10 +96,12 @@ function FormRegistration(props){
                         })
                         .then(function(response) {
                               console.log(response)
-                              history.push(`/profile/${login}`)})
+                              console.log(response['data']['data'])
+                              history.push(`/profile/${login}`)
+                              })
                         .catch(function (error) {
                             console.log(error);
-                                                }); */
+                                                }); 
                         registrationData={
                           "login":login,
                           "password":password,

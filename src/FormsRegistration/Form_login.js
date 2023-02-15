@@ -5,12 +5,13 @@ import { Button, Checkbox, Form, Input } from 'antd';
 import { Link } from 'react-router-dom';
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
+import axios from "axios";
 function Form_login () {
-  const [login, setLogin] = useState("");/* я так понимаю задаётся свойство login в State, ему 
-  присваивается начальное значение "" и возвращается метод(функция) по его изменению??*/
+  const [username, setUsername] = useState("");/*задаётся свойство login в State, ему 
+  присваивается начальное значение "" и возвращается метод(функция)*/
   const [password, setPassward] = useState("")
   const history = useHistory()
-  let loginData = {};
+  let usernameData = {};
   return (
      <div className={classes.formWrapper}>
      <Form
@@ -18,12 +19,18 @@ function Form_login () {
       className= {classes.login_form}
       initialValues={{ remember: true }}
       size = "large"
-      onFinish={(log, pass) =>{ 
-                loginData = {
-                  "login": login,
-                  "password": password
-                }
-                history.push(`/profile/${login}`)}}  // используем обработчик, предложенный Ant Design, работает, как onClick // 
+      onFinish={() =>{ 
+                let url = "http://127.0.0.1:8000/auth"
+                axios.post(url,{
+                'username':username,
+                "password":password  
+                }).then(function(response){
+                  console.log(response.headers)
+
+                }).catch(function(error){
+                  console.log(error);
+                })
+                history.push(`/profile/${username}`)}}  // используем обработчик, предложенный Ant Design, работает, как onClick // 
        >
       <Form.Item
         name="username"
@@ -35,8 +42,8 @@ function Form_login () {
         <Input prefix={<UserOutlined className="site-form-item-icon" />}
          
          placeholder="Username" 
-         value={login}
-         onChange = {(e) => setLogin(e.target.value)} /* e - объект синтетического события, в данном случае 
+         value={username}
+         onChange = {(e) => setUsername(e.target.value)} /* e - объект синтетического события, в данном случае 
          onChange, target - объект, указывающий на место, где "произошло событие" (в данном случае форма), 
          ну и value - непосредственно то, что было введено в форму. Соответственно это значение мы устанавливаем
           для свойства login в объекте State */ 
