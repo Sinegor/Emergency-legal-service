@@ -1,26 +1,14 @@
-import logo from './logo.jpg';
 import React from 'react';
 import { ReactDOM } from 'react';
 import {BrowserRouter, Route, useHistory} from 'react-router-dom';
 import { useParams } from 'react-router-dom';
-import { Button, Menu, DatePicker, Space, version } from "antd";
 import "antd/dist/antd.css";
-import classes from './App.module.css';
 import FormRegistration from './FormsRegistration/FormRegistration'
 import Navbar from './NavBar/NavBar';
 import Form_login from './FormsRegistration/Form_login';
 import Profile from './Profile/Profile';
 import { useWatch } from 'antd/lib/form/Form';
 import {useState} from 'react'
-import {
-  AppstoreOutlined,
-  ContainerOutlined,
-  DesktopOutlined,
-  MailOutlined,
-  MenuFoldOutlined,
-  MenuUnfoldOutlined,
-  PieChartOutlined,
-} from '@ant-design/icons';
 import { Breadcrumb, Layout,} from 'antd';
 const { Header, Content, Footer, Sider } = Layout;
 
