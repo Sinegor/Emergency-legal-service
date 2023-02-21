@@ -11,7 +11,7 @@ function Navbar () {
         theme="dark" defaultSelectedKeys={['2']}
         onClick={({key})=>history.push(key)}
         items={[
-                        {label:"Логин", key: "form_login", icon:<AimOutlined/> },
+                        {label:"Логин", key: "/form_login/", icon:<AimOutlined/> },
                         {label: "Личный кабинет", key: "/profile/", icon:<AimOutlined/>},
                         {label: "Домашняя страница", key: "/", icon:<AimOutlined/>},
                         {label: "Настройки", key: "/settings/", icon:<AimOutlined/>},

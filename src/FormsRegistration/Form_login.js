@@ -11,38 +11,26 @@ function Form_login () {
   присваивается начальное значение "" и возвращается метод(функция)*/
   const [password, setPassward] = useState("")
   const history = useHistory()
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.target);
-    data.set('username', username);
-    data.set('password', password)
-
-    let url = "http://127.0.0.1:8000/auth";
-    axios.post(url, data).then(function(response){
-      }).catch(function(error){
-        console.log(error);
-      })
-      history.push(`/profile/${username}`)}
+  
   return (
      <div className={classes.formWrapper}>
-     <form
+     <Form
       name="normal_login"
       className= {classes.login_form}
       initialValues={{ remember: true }}
       size = "large"
-      onSubmit={handleSubmit}
-      /*onFinish={() =>{ 
+      onFinish={() =>{ 
                 let url = "http://127.0.0.1:8000/auth"
-                axios.post(url,{
-                'username':username,
-                "password":password  
-                }).then(function(response){
+                let data = new FormData()
+                data.append('username', username)
+                data.append("password", password  )
+                axios.post(url,data).then(function(response){
                   console.log(response.headers)
-
+                  history.push(`/legal_assistanse`)
                 }).catch(function(error){
                   console.log(error);
                 })
-                history.push(`/profile/${username}`)}}  используем обработчик, предложенный Ant Design, работает, как onClick*/  // 
+                }}  // используем обработчик, предложенный Ant Design, работает, как onClick // 
        >
       <Form.Item
         name="username"
@@ -81,21 +69,17 @@ function Form_login () {
         </Form.Item>
         <Link to="" className= {classes.login_form_forgot}>Forgot password</Link>
       </Form.Item>
-      <Form.Item>
-      <Button type="primary" size="large" />
+      <Form.Item>      
+        <Button type="primary" htmlType="submit" 
+        className = {classes.login_form_button}
+        >
+          Log in
+        </Button>
         Or <Link to="/form_registration">register now!</Link>
       </Form.Item>
-    </form>
+    </Form>
     </div>
   );
 };
 
 export default Form_login;
-
-/*
-<Button type="primary" htmlType="submit" 
-className = {classes.login_form_button}
-> 
-  Log in
-</Button>
-*/
