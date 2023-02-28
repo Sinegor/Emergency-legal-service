@@ -1,13 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';/* библиотека, отвечающая за корректную работу
 веб-метрик */
-//import { Button, DatePicker, Space, version } from "antd";
+import { BrowserRouter } from 'react-router-dom';
 import "antd/dist/antd.css";
+
 import classes from './App.module.css';
-import ActiveUserContext from './context/activeUserContext';
+import './index.css';
+import App from './App';
+import { AuthWrapper } from './Context/AuthContext';
+
 
 //import store from '../redux/redux_store'; 
 const root = ReactDOM.createRoot(document.getElementById('root'));/* ранее в index.html в body был создан
@@ -17,9 +19,11 @@ root.render(          /* React.StrickMode - это строгий режим, о
   видимого UI, а просто активирует дополнительные проверки и предупреждения 
   для своих потомков. */
   <React.StrictMode> 
-    <ActiveUserContext.Provider value='none'>
-      <App className={classes.app}  />
-    </ActiveUserContext.Provider>
+    <AuthWrapper>
+      <BrowserRouter>
+        <App className={classes.app}  />
+        </BrowserRouter>
+    </AuthWrapper>
   </React.StrictMode>
 );
 

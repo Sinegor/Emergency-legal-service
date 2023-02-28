@@ -6,7 +6,9 @@ import { Link } from 'react-router-dom';
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
-function Form_login () {
+
+import { useAuth } from "../Context/AuthContext";
+function FormLogin () {
   const [username, setUsername] = useState("");/*задаётся свойство login в State, ему 
   присваивается начальное значение "" и возвращается метод(функция)*/
   const [password, setPassward] = useState("")
@@ -25,7 +27,8 @@ function Form_login () {
                 data.append('username', username)
                 data.append("password", password  )
                 axios.post(url,data).then(function(response){
-                  console.log(response.headers)
+                  let token = response.data
+                  localStorage.setItem('jwt_token', token)
                   history.push(`/legal_assistanse`)
                 }).catch(function(error){
                   console.log(error);
@@ -82,4 +85,4 @@ function Form_login () {
   );
 };
 
-export default Form_login;
+export default FormLogin;

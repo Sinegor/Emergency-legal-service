@@ -9,7 +9,7 @@ import { history } from './Helpers/history';
 import Profile from "./Profile/Profile"
 import LegalAssistance from "./LegalAssistance/LegalAssistance"
 import FormRegistration from "./FormsRegistration/FormRegistration";
-import Form_login from "./FormsRegistration/Form_login";
+import FormLogin from "./FormsRegistration/FormLogin";
 function Routes (){
     return (
         <BrowserRouter  >
@@ -23,7 +23,7 @@ function Routes (){
                     component={LegalAssistance}/>
         
         <Route path='/form_registration' component={FormRegistration} /> 
-        <Route path= '/form_login' component={Form_login}/>
+        <Route path= '/form_login' component={FormLogin}/>
   
         </Switch>
         <Redirect to ='/'/>

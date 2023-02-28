@@ -96,7 +96,7 @@ function FormRegistration(props){
                         })
                         .then(function(response) {
                               console.log(response)
-                              console.log(response['data']['data'])
+                              
                               history.push(`/profile/${login}`)
                               })
                         .catch(function (error) {

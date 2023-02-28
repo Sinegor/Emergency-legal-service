@@ -1,25 +1,30 @@
 import React from 'react';
-import {BrowserRouter, Route, useHistory} from 'react-router-dom';
-import { useParams } from 'react-router-dom';
+import {BrowserRouter, Route, Switch, useHistory} from 'react-router-dom';
+import CacheBuster from 'react-cache-buster';
 import "antd/dist/antd.css";
-import { useWatch } from 'antd/lib/form/Form';
+import Text from "antd/es/typography/Text";
+
 import {useState} from 'react'
-import { Breadcrumb, Layout,} from 'antd';
+import { Breadcrumb, Layout, ConfigProvider} from 'antd';
 
 import FormRegistration from './FormsRegistration/FormRegistration'
 import Navbar from './NavBar/NavBar';
-import Form_login from './FormsRegistration/Form_login';
+import FormLogin from './FormsRegistration/FormLogin';
 import Profile from './Profile/Profile';
 import IlaAnketa from './ILA-anketa/IlaAnketa';
+
 import LegalAssistance from './LegalAssistance/LegalAssistance';
 import Main from './Main/Main';
-
+import { useAuth } from './Context/AuthContext';
 const { Header, Content, Footer, Sider } = Layout;
 
 function App() {
+  const auth = useAuth();
+  localStorage.clear()
+  
   const [collapsed, setCollapsed] = useState(false);
   return (
-    <BrowserRouter>
+    <ConfigProvider>
       <Layout
         style={{
           minHeight: '100vh',
@@ -63,12 +68,14 @@ function App() {
                 minHeight: 360,
               }}
             >
+            <Switch>
             <Route exact path='/' component={Main} /> 
             <Route exact path='/form_registration' component={FormRegistration} /> 
-            <Route exact path= '/form_login' component={Form_login}/>
+            <Route exact path='/form_login' component = {FormLogin}/>
             <Route exact path='/profile/' component={Profile} /> 
             <Route exact path='/ila_anketa/' component={IlaAnketa}/>  
-            <Route exact path= '/legal_assistanse' component={LegalAssistance} />       
+            <Route exact path= '/legal_assistanse' component={LegalAssistance} />
+            </Switch>       
             </div>
           </Content>
           <Footer
@@ -80,8 +87,10 @@ function App() {
           
           </Footer>
         </Layout>
+      
+      
       </Layout>
-    </BrowserRouter>    
+    </ConfigProvider>
   );
 }
 export default App; 
