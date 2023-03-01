@@ -19,9 +19,7 @@ import { useAuth } from './Context/AuthContext';
 const { Header, Content, Footer, Sider } = Layout;
 
 function App() {
-  const auth = useAuth();
-  localStorage.clear()
-  
+  const auth = useAuth();  
   const [collapsed, setCollapsed] = useState(false);
   return (
     <ConfigProvider>

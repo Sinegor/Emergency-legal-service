@@ -3,7 +3,6 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import LegalAssistanceMenu from './LegalAssistanceMenu'
 import IlaAnketa from '../ILA-anketa/IlaAnketa'
 function LegalAssistance(props){
-console.log (localStorage.getItem("jwt_token"))
 return (
     <BrowserRouter>
     <LegalAssistanceMenu 
