@@ -1,11 +1,11 @@
 import React, {createContext, useContext, useEffect, useState} from "react";
-import {auth, cancel, logout as authLogout} from '../API/auth';
+import {check_auth, cancel, logout as authLogout} from '../API/auth';
 
 const authContext = createContext();
 
 const AuthWrapper = ({children}) => {
-    const auth = useProvideAuth();
-    return <authContext.Provider value={auth}>{children}</authContext.Provider>
+    const auth_value = useProvideAuth();
+    return <authContext.Provider value={auth_value}>{children}</authContext.Provider>
 };
 /*  auth is Object { user: null, authLoading: false, logout: logout() }
 */
@@ -15,8 +15,8 @@ const useAuth = () => {
 };
 
 const useProvideAuth = () => {
-
-    const [user, setUser] = useState(null);
+    let current_user = localStorage.getItem('jwt_token')
+    const [user, setUser] = useState(current_user);
     const [authLoading, setAuthLoading] = useState(true);
 
     const logout = () => {
@@ -53,12 +53,12 @@ const useProvideAuth = () => {
 */
     useEffect(() => {
         setAuthLoading(true);
-        auth(setUser, () => {setAuthLoading(false)});
+        check_auth(setUser, () => {setAuthLoading(false)});
 
         return () => {
             cancel && cancel();
         }
-    }, [])
+    }, [localStorage.getItem('jwt_token')])
 
     return {
         user,

@@ -20,6 +20,7 @@ const { Header, Content, Footer, Sider } = Layout;
 
 function App() {
   const auth = useAuth();  
+  localStorage.clear()
   const [collapsed, setCollapsed] = useState(false);
   return (
     <ConfigProvider>

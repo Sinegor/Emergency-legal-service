@@ -3,8 +3,10 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { HourglassOutlined, ThunderboltOutlined, LaptopOutlined } from '@ant-design/icons';
 import { Menu } from 'antd';
+import { useAuth } from "../Context/AuthContext";
 function ProfileMenu (props) {
-const items = [
+  console.log(useAuth()) 
+  const items = [
   {
     label: <Link to={"/profile/"+props.user+"/"+props.link_1}>{props.name_1}</Link>,
     key: 'ma',

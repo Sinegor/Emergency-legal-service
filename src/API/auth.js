@@ -3,23 +3,19 @@ import axios from "axios";
 
 let cancel;
 
-const auth = (setUser, callback) => {
+const check_auth = (setUser, callback) => {
     let token = localStorage.getItem("jwt_token")
     
     axiosInstance.get('/auth/users/me/',  
     {
         headers:{'Authorization':`Bearer ${token}`},
-        cancelToken: new axios.CancelToken(function executor(c) {
-            cancel = c;
-        })
+        
     })
     .then(({data}) => {
-        if (data.authorize_url) {
-            window.location.href = data.authorize_url;
-        } else {
-            setUser(data);
-            callback();
-        }
+        
+        setUser(data);
+        callback();
+        
     })
     .catch(({error}) => {
         console.log(error);
@@ -45,4 +41,4 @@ const logout = () => {
     })
 };
 
-export { auth, logout, cancel }
+export { check_auth, logout, cancel }
