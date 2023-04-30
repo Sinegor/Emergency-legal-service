@@ -27,7 +27,8 @@ function FormLogin () {
                 data.append('username', username)
                 data.append("password", password  )
                 axios.post(url,data).then(function(response){
-                  let token = response.data
+                  console.log (response.data)
+                  let token = response.data.token
                   localStorage.setItem('jwt_token', token)
                   history.push(`/legal_assistanse`)
                 }).catch(function(error){

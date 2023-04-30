@@ -77,7 +77,7 @@ function FormRegistration(props){
   const [userMail, setUserMail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const history = useHistory()
-  let registrationData = {}
+  
   return(
       <div className={classes.formWrapper}>
       <Form
@@ -86,7 +86,7 @@ function FormRegistration(props){
       className= {classes.registration}
       name="register"
       onFinish={() => {
-                        let url = "http://127.0.0.1:8000/client/registration"
+                        let url = "http://127.0.0.1:8000/auth/registration"
                         axios
                         .post(url,{
                           "login":login,
@@ -102,12 +102,6 @@ function FormRegistration(props){
                         .catch(function (error) {
                             console.log(error);
                                                 }); 
-                        registrationData={
-                          "login":login,
-                          "password":password,
-                          "userMail":userMail,
-                          "phoneNumber":phoneNumber
-                        }
                           }}
       initialValues={{
         residence: ['zhejiang', 'hangzhou', 'xihu'],
