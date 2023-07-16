@@ -1,6 +1,6 @@
 import React from "react";
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
-import {  AutoComplete, Button, Cascader, Checkbox, Col, Form, Input, InputNumber, Row, Select } from 'antd';
+import {  AutoComplete, Button, Cascader, Checkbox, Col, Form, Input, InputNumber, Radio, Row, Select } from 'antd';
 import classes from './Form_registration.module.css'
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
@@ -76,6 +76,7 @@ function FormRegistration(props){
   const [password, setPassward] = useState("");
   const [userMail, setUserMail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
+  const [userKind, setUserKind] = useState('')
   const history = useHistory()
   let registrationData = {}
   return(
@@ -86,13 +87,13 @@ function FormRegistration(props){
       className= {classes.registration}
       name="register"
       onFinish={() => {
-                        let url = "http://127.0.0.1:8000/client/registration"
+                        let url = "http://127.0.0.1:8000/accounts/registration"
                         axios
                         .post(url,{
-                          "login":login,
+                          "username":login,
                           "password":password,
-                          "userMail":userMail,
-                          "phoneNumber":phoneNumber
+                          "email":userMail,
+                          "kind_of_user": userKind
                         })
                         .then(function(response) {
                               console.log(response)
@@ -103,10 +104,10 @@ function FormRegistration(props){
                             console.log(error);
                                                 }); 
                         registrationData={
-                          "login":login,
+                          "username":login,
                           "password":password,
-                          "userMail":userMail,
-                          "phoneNumber":phoneNumber
+                          "email":userMail,
+                          "kind_of_user": userKind
                         }
                           }}
       initialValues={{
@@ -197,28 +198,23 @@ function FormRegistration(props){
         onChange = {(e)=>setLogin(e.target.value)}
          />
       </Form.Item>
-      <Form.Item
-        name="phone"
-        label="Phone Number"
-        rules={[
+            <Form.Item
+          name = "userKind"
+          label = "Radio"
+          rules={[
           {
             required: true,
-            message: 'Please input your phone number!',
+            message: 'Укажите, в качестве кого вы хотите зарегистрироваться',
+            
           },
-          {
-            min: 8,
-            message: "Введите корректный телефонный номер"
-          }
         ]}
-      >
-        <Input
-          //addonBefore={prefixSelector}
-          value = {phoneNumber}
-          onChange = {(e)=>setPhoneNumber(e.target.value)}
-          style={{
-            width: '100%',
-          }}
-        />
+          value = {userKind}
+          onChange = {(e)=>setUserKind(e.target.value)}
+        >
+        <Radio.Group>
+          <Radio value="1">Клиент</Radio>
+          <Radio value="2">Юрист</Radio>
+        </Radio.Group>
       </Form.Item>
 
       <Form.Item
