@@ -97,8 +97,11 @@ function FormRegistration(props){
                         })
                         .then(function(response) {
                               console.log(response)
-                              
-                              history.push(`/profile/${login}`)
+                              if (userKind == '1'){
+                                history.push(`/client-registration`)
+                              } else{
+                                history.push(`/lawyer-registration`)
+                              }  
                               })
                         .catch(function (error) {
                             console.log(error);

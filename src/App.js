@@ -16,6 +16,7 @@ import IlaAnketa from './ILA-anketa/IlaAnketa';
 import LegalAssistance from './LegalAssistance/LegalAssistance';
 import Main from './Main/Main';
 import { useAuth } from './Context/AuthContext';
+{/*import headerImage from './Images/running_lawyer.png'*/}
 const { Header, Content, Footer, Sider } = Layout;
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
 
             }}
           >
+{/*         <img src={headerImage} alt="Здесь должно быть изображение"/> */}
           <h1
           style={{
             color:'greenyellow'}
